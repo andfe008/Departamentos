@@ -2,7 +2,13 @@
 
 Foobar is a Python library for dealing with word pluralization.
 
-## Installation
+## Instalación
+
+Para poder ejecutar el repositorio
+1-Dado que el base de datos fué realizada mediante codefirts se debe abrir 
+![alt text](https://github.com/andfe008/Departamentos/blob/main/Images/Open-Console.jpg?raw=true)
+
+
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 

@@ -1,0 +1,56 @@
+﻿@model empresa.DatabaseFirts.HR_PAGO
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3> ¿Seguro que desea editar</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            CODIGO EMPRESA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COD_EMPRESA)
+        </dd>
+
+        <dt>
+            CODIGO RUBRO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COD_RUBRO_PAGO)
+        </dd>
+
+        <dt>
+           RESULTADO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RESULTADO)
+        </dd>
+
+        <dt>
+          FECHA DE PAGO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_PAGO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver al inicio", "Index")
+        </div>
+    }
+</div>

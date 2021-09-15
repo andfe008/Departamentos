@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DepartamentosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="HR_DEPARTAMENTO">
+    <Key>
+      <PropertyRef Name="cod_departamento" />
+    </Key>
+    <Property Name="cod_departamento" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="HR_PAGO">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" Nullable="false" />
+    <Property Name="Cod_Empresa" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Cod_Rubro_Pago" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="Resultado" Type="numeric" Precision="18" Scale="6" />
+    <Property Name="Fecha_pago" Type="date" />
+    <Property Name="Cod_departamento" Type="int" />
+  </EntityType>
+  <Association Name="FK_HR_PAGO_HR_DEPARTAMENTO">
+    <End Role="HR_DEPARTAMENTO" Type="Self.HR_DEPARTAMENTO" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HR_PAGO" Type="Self.HR_PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HR_DEPARTAMENTO">
+        <PropertyRef Name="cod_departamento" />
+      </Principal>
+      <Dependent Role="HR_PAGO">
+        <PropertyRef Name="Cod_departamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DepartamentosModelStoreContainer">
+    <EntitySet Name="HR_DEPARTAMENTO" EntityType="Self.HR_DEPARTAMENTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HR_PAGO" EntityType="Self.HR_PAGO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_HR_PAGO_HR_DEPARTAMENTO" Association="Self.FK_HR_PAGO_HR_DEPARTAMENTO">
+      <End Role="HR_DEPARTAMENTO" EntitySet="HR_DEPARTAMENTO" />
+      <End Role="HR_PAGO" EntitySet="HR_PAGO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

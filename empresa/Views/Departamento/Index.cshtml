@@ -1,0 +1,35 @@
+﻿@model IEnumerable<empresa.DatabaseFirts.HR_DEPARTAMENTO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de departamentos</h2>
+
+<p>
+    @Html.ActionLink("Crear uno nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE)
+        </td>
+        <td>
+         
+            @Html.ActionLink("Editar", "Edit", new { COD_DEPARTAMENTO = item.COD_DEPARTAMENTO })
+            @Html.ActionLink("Detalle", "Details", new { COD_DEPARTAMENTO = item.COD_DEPARTAMENTO })
+            @Html.ActionLink("Eliminar", "Delete", new { COD_DEPARTAMENTO = item.COD_DEPARTAMENTO })
+        </td>
+    </tr>
+}
+
+</table>

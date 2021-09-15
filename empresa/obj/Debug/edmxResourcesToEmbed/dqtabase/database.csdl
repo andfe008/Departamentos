@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DepartamentosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DepartamentosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HR_DEPARTAMENTO" EntityType="DepartamentosModel.HR_DEPARTAMENTO" />
+    <EntitySet Name="HR_PAGO" EntityType="DepartamentosModel.HR_PAGO" />
+    <AssociationSet Name="FK_HR_PAGO_HR_DEPARTAMENTO" Association="DepartamentosModel.FK_HR_PAGO_HR_DEPARTAMENTO">
+      <End Role="HR_DEPARTAMENTO" EntitySet="HR_DEPARTAMENTO" />
+      <End Role="HR_PAGO" EntitySet="HR_PAGO" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="HR_DEPARTAMENTO">
+    <Key>
+      <PropertyRef Name="cod_departamento" />
+    </Key>
+    <Property Name="cod_departamento" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HR_PAGO" Relationship="DepartamentosModel.FK_HR_PAGO_HR_DEPARTAMENTO" FromRole="HR_DEPARTAMENTO" ToRole="HR_PAGO" />
+  </EntityType>
+  <EntityType Name="HR_PAGO">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="Int32" Nullable="false" />
+    <Property Name="Cod_Empresa" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Cod_Rubro_Pago" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Resultado" Type="Decimal" Precision="18" Scale="6" />
+    <Property Name="Fecha_pago" Type="DateTime" Precision="0" />
+    <Property Name="Cod_departamento" Type="Int32" />
+    <NavigationProperty Name="HR_DEPARTAMENTO" Relationship="DepartamentosModel.FK_HR_PAGO_HR_DEPARTAMENTO" FromRole="HR_PAGO" ToRole="HR_DEPARTAMENTO" />
+  </EntityType>
+  <Association Name="FK_HR_PAGO_HR_DEPARTAMENTO">
+    <End Type="DepartamentosModel.HR_DEPARTAMENTO" Role="HR_DEPARTAMENTO" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DepartamentosModel.HR_PAGO" Role="HR_PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HR_DEPARTAMENTO">
+        <PropertyRef Name="cod_departamento" />
+      </Principal>
+      <Dependent Role="HR_PAGO">
+        <PropertyRef Name="Cod_departamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

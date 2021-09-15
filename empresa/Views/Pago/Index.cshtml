@@ -1,0 +1,52 @@
+﻿@model IEnumerable<empresa.DatabaseFirts.HR_PAGO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de pagos</h2>
+
+<p>
+    @Html.ActionLink("Crear uno nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           CODIGO EMPRESA
+        </th>
+        <th>
+            CODIGO RUBRO DE PAGO
+        </th>
+        <th>
+            RESULTADO
+        </th>
+        <th>
+           FECHA DE PAGO
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.COD_EMPRESA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COD_RUBRO_PAGO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RESULTADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_PAGO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CODIGO }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CODIGO }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CODIGO })
+        </td>
+    </tr>
+}
+
+</table>

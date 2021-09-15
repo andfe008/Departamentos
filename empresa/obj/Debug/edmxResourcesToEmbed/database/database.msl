@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DepartamentosModelStoreContainer" CdmEntityContainer="DepartamentosEntities">
+    <EntitySetMapping Name="HR_DEPARTAMENTO">
+      <EntityTypeMapping TypeName="DepartamentosModel.HR_DEPARTAMENTO">
+        <MappingFragment StoreEntitySet="HR_DEPARTAMENTO">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="cod_departamento" ColumnName="cod_departamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HR_PAGO">
+      <EntityTypeMapping TypeName="DepartamentosModel.HR_PAGO">
+        <MappingFragment StoreEntitySet="HR_PAGO">
+          <ScalarProperty Name="Cod_departamento" ColumnName="Cod_departamento" />
+          <ScalarProperty Name="Fecha_pago" ColumnName="Fecha_pago" />
+          <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+          <ScalarProperty Name="Cod_Rubro_Pago" ColumnName="Cod_Rubro_Pago" />
+          <ScalarProperty Name="Cod_Empresa" ColumnName="Cod_Empresa" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
